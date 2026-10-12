@@ -11,7 +11,7 @@ const DATA_DIR = path.join(ROOT, 'data');
 const UPLOAD_DIR = path.join(DATA_DIR, 'uploads');
 const PUBLIC_DIR = path.join(ROOT, 'public');
 const PORT = Number(process.env.PORT || 3000);
-const HOST = '127.0.0.1'; // Lab is deliberately bound to this computer only.
+const HOST = process.env.HOST || '0.0.0.0'; // Bind to all interfaces for cloud deployment.
 mkdirSync(UPLOAD_DIR, { recursive: true });
 
 const db = new DatabaseSync(path.join(DATA_DIR, 'ruangkampus.sqlite'));
