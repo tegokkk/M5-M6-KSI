@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#102c35">
+  <title>RuangKampus — Portal Akademik</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <section id="loginScreen" class="login-wrap">
+    <div class="login-side">
+      <div class="brand"><span class="brand-mark">r.</span> RuangKampus</div>
+      <div class="side-copy"><div class="eyebrow">Portal akademik · Kampus Cakrawala</div><h1>Belajar tumbuh, bersama.</h1><p>Ruang untuk mengikuti kelas, mengumpulkan karya, dan bertukar ide sepanjang perjalanan kuliahmu.</p><div class="side-decoration"><i></i><i></i><i></i></div></div>
+      <div class="side-foot">© 2026 Kampus Cakrawala · Lab lokal</div>
+    </div>
+    <div class="login-main"><form id="loginForm" class="login-card"><div class="welcome">Selamat datang kembali</div><h2>Masuk ke portal</h2><p>Gunakan akun demo untuk memulai.</p>
+      <div class="field"><label for="email">Email kampus</label><input class="input" id="email" name="email" autocomplete="username" placeholder="nama@demo.test" required></div>
+      <div class="field"><label for="password">Kata sandi</label><input class="input" id="password" type="password" autocomplete="current-password" placeholder="Masukkan kata sandi" required></div>
+      <button class="btn btn-primary btn-block" type="submit">Masuk <span aria-hidden="true">→</span></button><div id="loginAlert" class="login-alert" role="status"></div>
+      <div class="login-note"><b>Lingkungan latihan lokal.</b><br>Akun dan data sintetis. Tiga kelemahan backend sengaja tersedia untuk pembelajaran. Jangan expose server ke jaringan publik.</div>
+      <details class="demo-creds"><summary>Lihat akun demo</summary><div>Mahasiswa · <b>tegosaputra@demo.test</b> / <b>mahasiswa123</b><br>Dosen · <b>rezaredo@demo.test</b> / <b>dosen123</b><br>Admin · <b>admin@demo.test</b> / <b>admin123</b></div></details>
+    </form></div>
+  </section>
+  <div id="app" class="app-shell hidden">
+    <aside id="sidebar" class="sidebar"><div class="brand"><span class="brand-mark">r.</span> RuangKampus</div><div class="nav-label">Menu utama</div><nav id="navigation" class="nav"></nav><div class="sidebar-bottom"><div class="safe-chip"><i class="safe-dot"></i> Data demo lokal</div><button class="logout" id="logoutBtn">↪ &nbsp; Keluar dari portal</button></div></aside>
+    <main class="main"><header class="topbar"><button class="mobile-menu" id="menuBtn" aria-label="Buka menu">☰</button><div class="crumb">Kampus Cakrawala &nbsp; / &nbsp; <b id="crumbLabel">Ringkasan</b></div><div class="profile"><div class="avatar" id="profileAvatar">TS</div><div class="profile-copy"><b id="profileName">Tego Saputra</b><span id="profileRole">Mahasiswa</span></div></div></header><div id="page" class="content"></div></main>
+  </div>
+  <div id="toastRoot" aria-live="polite"></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

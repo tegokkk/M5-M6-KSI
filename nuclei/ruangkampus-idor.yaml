@@ -1,0 +1,38 @@
+id: ruangkampus-idor-grade-access
+
+info:
+  name: RuangKampus Student Grade IDOR Lab
+  author: codex
+  severity: medium
+  description: |
+    Logs in as the synthetic student Tego and requests the synthetic student
+    Raka's grade record. A 200 response containing Raka's name indicates the
+    deliberately missing ownership check in this localhost training lab.
+  tags: training,ruangkampus,idor,authorization
+
+http:
+  - method: POST
+    path:
+      - "{{BaseURL}}/api/login"
+    headers:
+      Content-Type: application/json
+    body: '{"email":"tegosaputra@demo.test","password":"mahasiswa123"}'
+    cookie-reuse: true
+    matchers:
+      - type: status
+        status:
+          - 200
+
+  - method: GET
+    path:
+      - "{{BaseURL}}/api/grades/mhs-1088"
+    cookie-reuse: true
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        part: body
+        words:
+          - "Raka Pratama"

